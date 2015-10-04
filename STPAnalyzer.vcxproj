@@ -48,12 +48,12 @@
   <PropertyGroup>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win64\vc10\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win64\vc10\obj\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">STL-Viewer</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">STPAnalyzer</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win64\vc10\bind\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win64\vc10\objd\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">STL-Viewer</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">STPAnalyzer</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
     <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\OpenCASCADE6.9.0\qt486-vc10-64\include\QtCore;C:\OpenCASCADE6.9.0\freetype-2.5.3-vc10-64\include;C:\OpenCASCADE6.9.0\qt486-vc10-64\include\QtGui;C:\OpenCASCADE6.9.0\qt486-vc10-64\include;$(IncludePath)</IncludePath>
     <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\OpenCASCADE6.9.0\qt486-vc10-64\lib;C:\OpenCASCADE6.9.0\freetype-2.5.3-vc10-64\lib;$(LibraryPath)</LibraryPath>
@@ -127,7 +127,7 @@
       <DataExecutionPrevention>true</DataExecutionPrevention>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreImportLibrary>true</IgnoreImportLibrary>
-      <OutputFile>$(OutDir)\STL-Viewer.exe</OutputFile>
+      <OutputFile>$(OutDir)\STPAnalyzer.exe</OutputFile>
       <RandomizedBaseAddress>true</RandomizedBaseAddress>
       <SubSystem>Console</SubSystem>
       <SuppressStartupBanner>true</SuppressStartupBanner>

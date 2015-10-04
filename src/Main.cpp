@@ -104,7 +104,22 @@ IFSelect_ReturnStatus DumpInfo(const Standard_CString& aFileName)
 	std::cout<<"Number of surfaces: "<< surfaces.size() + cylinders.size() + planes.size() <<"\n";
 	std::cout<<"Number of planes: "<< planes.size()<<"\n";
 	std::cout<<"Number of cylindrical surface: "<< cylinders.size()<<"\n";
-    std::cout<<"Number of axes: "<< axes.size()<<"\n";
+    std::cout<<"Number of axes: "<< axes.size()<<"\n\n";
+
+	std::cout<<"Dumping surfaces...\n\n";
+
+
+	for(Standard_Integer i = 1; i <=num; ++i)
+	{
+		auto ent = model->Entity(i);
+		auto surf = Handle(StepGeom_Surface)::DownCast (ent );
+		if(surf)
+		{
+			DumpSurfaceInfo(surf);
+		}
+		
+	}
+
 
 	return status;
 }
@@ -115,11 +130,14 @@ int main( int arc, char **  argv)
 	std::cout<<"STEP Files Analyzer\n";
 
 	if(arc <= 1)
-		std::cout<<"Please provide file name for analisys\n";
+	{
+		std::cout<<"Please provide file name for analysis\n";
+		return 0;
+	}
 
 	const char* file_name = argv[1];
 
-	auto res = DumpInfo(file_name);
+	DumpInfo(file_name);
 
 	return 0;
 }

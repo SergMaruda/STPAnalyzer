@@ -137,6 +137,9 @@ int main( int arc, char **  argv)
 
 	const char* file_name = argv[1];
 
+	std::cout<<"File name: "<<file_name<<"\n";
+
+
 	DumpInfo(file_name);
 
 	return 0;

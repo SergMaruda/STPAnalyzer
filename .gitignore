@@ -1,0 +1,9 @@
+/win64/vc10/bind/*.dll
+/win64/vc10/bind/*.ilk
+/win64/vc10/obj/*.tlog
+/win64/vc10/objd/*.tlog
+/win64/vc10/obj/*.log
+/win64/vc10/bin
+/win64/vc10/bind
+/win64/vc10/obj
+/win64/vc10/objd

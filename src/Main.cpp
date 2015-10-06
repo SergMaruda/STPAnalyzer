@@ -139,15 +139,14 @@ IFSelect_ReturnStatus DumpInfo(const Standard_CString& aFileName)
 	std::cout<<"Number of surfaces found (including "<< planes.size() <<" plane(s), "<<cylinders.size()<<" cylindrical surface(s)):" << sufraces_num << "\n";
     std::cout<<"Number of axes found: "<< axes.size()<<"\n\n";
 
-	std::cout<<"Dumping planes...\n";
+	std::cout<<"\nDumping planes...\n";
 
 	for(size_t i = 0; i < planes.size(); ++i)
 	{
 		DumpSurfaceInfo(planes[i]);
 	}
 
-
-	std::cout<<"Dumping cylindrical surfaces...\n";
+	std::cout<<"\nDumping cylindrical surfaces...\n";
 
 	for(size_t i = 0; i < cylinders.size(); ++i)
 	{
@@ -155,14 +154,12 @@ IFSelect_ReturnStatus DumpInfo(const Standard_CString& aFileName)
 	}
 
 
-	std::cout<<"Dumping other surfaces...\n";
+	std::cout<<"\nDumping other surfaces...\n";
 
 	for(size_t i = 0; i < surfaces.size(); ++i)
 	{
 		DumpSurfaceInfo(surfaces[i]);
 	}
-
-
 
 	return status;
 }

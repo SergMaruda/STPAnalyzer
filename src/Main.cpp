@@ -55,9 +55,9 @@ gp_Pnt SurfaceCenter(const TopoDS_Shape& i_shape)
 TopoDS_Shape ToShape(Handle(Geom_Surface) s) 
 {
 	const Standard_Real TolDegen = 1E-7;
-// 	Standard_Real u1,u2,v1,v2;
-// 	s->Bounds(u1,u2,v1,v2);
-	BRepBuilderAPI_MakeFace mkBuilder(s,/* u1, u2, v1, v2, */TolDegen);
+ 	Standard_Real u1,u2,v1,v2;
+ 	s->Bounds(u1,u2,v1,v2);
+	BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2, TolDegen);
 
 	return mkBuilder.Shape();
 }

@@ -52,29 +52,45 @@ gp_Pnt SurfaceCenter(const TopoDS_Shape& i_shape)
 }
 
 //-----------------------------------------------------------------------------------------------------
+bool IsSurfaceInfinite(Handle(Geom_Surface) s)
+{
+	Standard_Real u1,u2,v1,v2;
+	s->Bounds(u1,u2,v1,v2);
+
+	return (Precision::IsPositiveInfinite(fabs(u1)) ||
+			Precision::IsPositiveInfinite(fabs(u2)) ||
+			Precision::IsPositiveInfinite(fabs(v1)) ||
+			Precision::IsPositiveInfinite(fabs(v1)));
+}
+
+//-----------------------------------------------------------------------------------------------------
 TopoDS_Shape ToShape(Handle(Geom_Surface) s) 
 {
 	const Standard_Real TolDegen = 1E-7;
  	Standard_Real u1,u2,v1,v2;
  	s->Bounds(u1,u2,v1,v2);
+	
 	BRepBuilderAPI_MakeFace mkBuilder(s, u1, u2, v1, v2, TolDegen);
-
 	return mkBuilder.Shape();
 }
 
 //------------------------
 void DumpSurfaceInfo(Handle(StepGeom_Surface) i_step_geom_surface)
-	{
-		Handle(Geom_Surface) geom_surf;
-		StepToGeom_MakeSurface::Convert(i_step_geom_surface, geom_surf);
+{
+	Handle(Geom_Surface) geom_surf;
+	StepToGeom_MakeSurface::Convert(i_step_geom_surface, geom_surf);
 
-		auto shape = ToShape(geom_surf);
+	auto shape = ToShape(geom_surf);
 
-		auto center = SurfaceCenter(shape );
+	auto center = SurfaceCenter(shape );
 
-		GeomTools_SurfaceSet::PrintSurface(geom_surf, std::cout);
+	GeomTools_SurfaceSet::PrintSurface(geom_surf, std::cout);
+
+	if(IsSurfaceInfinite(geom_surf) == false)
 		std::cout<<"Surface center: "<< center << "\n";
-    }
+	else
+		std::cout<<"Surface is infinite. Can't find center.\n";
+}
 
 //------------------------
 IFSelect_ReturnStatus DumpInfo(const Standard_CString& aFileName)
@@ -84,7 +100,7 @@ IFSelect_ReturnStatus DumpInfo(const Standard_CString& aFileName)
 	IFSelect_ReturnStatus status = aReader.ReadFile(aFileName);
 	if (status != IFSelect_RetDone)
 		return status;
-	
+
 	aReader.WS()->MapReader()->SetTraceLevel(2); // increase default trace level
 
 	auto model = aReader.StepModel();

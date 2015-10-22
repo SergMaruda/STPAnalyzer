@@ -87,9 +87,9 @@ void DumpSurfaceInfo(Handle(StepGeom_Surface) i_step_geom_surface)
 	GeomTools_SurfaceSet::PrintSurface(geom_surf, std::cout);
 
 	if(IsSurfaceInfinite(geom_surf) == false)
-		std::cout<<"Surface center: "<< center << "\n";
+		std::cout<<"Surface center: "<< center << "\n\n\n";
 	else
-		std::cout<<"Surface is infinite. Can't find center.\n";
+		std::cout<<"Surface is infinite. Can't find center.\n\n\n";
 }
 
 //------------------------
